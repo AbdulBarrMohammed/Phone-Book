@@ -28,7 +28,13 @@ namespace PhoneBook.Controller
             db.SaveChanges();
         }
 
-        public static void UpdatePhone() {}
+        public static void UpdatePhone(User user)
+        {
+            using var db = new PhoneDBContext();
+            db.Update(user);
+            db.SaveChanges();
+
+        }
 
         public static User GetPhoneById(int id)
         {

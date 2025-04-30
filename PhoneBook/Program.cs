@@ -34,7 +34,7 @@ while (isAppRunning)
             UserService.DeletePhone();
             break;
         case MenuOptions.UpdatePhone:
-            UserController.UpdatePhone();
+            UserService.UpdateUser();
             break;
         case MenuOptions.ViewAllPhones:
             UserService.GetUsers();
