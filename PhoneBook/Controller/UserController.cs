@@ -7,9 +7,9 @@ using Spectre.Console;
 
 namespace PhoneBook.Controller
 {
-    public class UserController
+    static class UserController
     {
-        public void AddPhone()
+        public static void AddPhone()
         {
             var name = AnsiConsole.Ask<string>("User name: ");
             var email = AnsiConsole.Ask<string>("User email: ");
@@ -22,12 +22,19 @@ namespace PhoneBook.Controller
 
         }
 
-        public void DeletePhone() {}
 
-        public void UpdatePhone() {}
+        public static void DeletePhone() {}
 
-        public void ViewPhone() {}
+        public static void UpdatePhone() {}
 
-        public void ViewAllPhones() {}
+        public static void ViewPhone() {}
+
+
+        public static List<User> ViewAllPhones()
+        {
+            var db = new PhoneDBContext();
+            var users = db.Users.ToList<User>();
+            return users;
+        }
     }
 }

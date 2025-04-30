@@ -4,7 +4,6 @@ using PhoneBook.Controller;
 using Spectre.Console;
 
 var isAppRunning = true;
-UserController userController = new();
 while (isAppRunning)
 
 {
@@ -28,19 +27,20 @@ while (isAppRunning)
 
     {
         case MenuOptions.AddPhone:
-            userController.AddPhone();
+            UserController.AddPhone();
             break;
         case MenuOptions.DeletePhone:
-            userController.DeletePhone();
+            UserController.DeletePhone();
             break;
         case MenuOptions.UpdatePhone:
-            userController.UpdatePhone();
+            UserController.UpdatePhone();
             break;
         case MenuOptions.ViewAllPhones:
-            userController.ViewAllPhones();
+            var users = UserController.ViewAllPhones();
+            UserInterface.ShowPhoneBookTable(users);
             break;
         case MenuOptions.ViewPhone:
-            userController.ViewPhone();
+            UserController.ViewPhone();
             break;
         case MenuOptions.Quit:
             isAppRunning = false;
