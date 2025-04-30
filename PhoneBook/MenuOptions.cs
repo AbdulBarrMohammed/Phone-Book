@@ -6,7 +6,7 @@ namespace PhoneBook
         DeletePhone,
         UpdatePhone,
         ViewPhone,
-        ViewAllPhone,
+        ViewAllPhones,
         Quit
     }
 }
