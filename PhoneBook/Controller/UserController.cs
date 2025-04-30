@@ -27,7 +27,12 @@ namespace PhoneBook.Controller
 
         public static void UpdatePhone() {}
 
-        public static void ViewPhone() {}
+        public static User GetPhoneById(int id)
+        {
+            var db = new PhoneDBContext();
+            var user = db.Users.SingleOrDefault(x => x.Id == id);
+            return user;
+        }
 
 
         public static List<User> ViewAllPhones()

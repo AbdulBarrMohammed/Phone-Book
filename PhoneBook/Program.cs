@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Identity.Client;
 using PhoneBook;
 using PhoneBook.Controller;
 using Spectre.Console;
@@ -40,7 +41,9 @@ while (isAppRunning)
             UserInterface.ShowPhoneBookTable(users);
             break;
         case MenuOptions.ViewPhone:
-            UserController.ViewPhone();
+            //UserController.ViewPhone();
+            var user = UserService.GetUserOptionInput();
+            UserInterface.ShowUser(user);
             break;
         case MenuOptions.Quit:
             isAppRunning = false;
