@@ -15,6 +15,6 @@ namespace PhoneBook.Controller
 
         public void ViewPhone() {}
 
-        public void ViewAllPhone() {}
+        public void ViewAllPhones() {}
     }
 }
