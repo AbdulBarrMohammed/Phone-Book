@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Identity.Client;
 using PhoneBook.Controller;
 using PhoneBook.Model;
 using Spectre.Console;
@@ -10,7 +11,32 @@ namespace PhoneBook
 {
     static class UserService
     {
-        public static User GetUserOptionInput()
+        internal static void InsertPhone()
+        {
+            var name = AnsiConsole.Ask<string>("User name: ");
+            var email = AnsiConsole.Ask<string>("User email: ");
+            var phoneNumber = AnsiConsole.Ask<string>("User phone number: ");
+
+            UserController.AddPhone(name, email, phoneNumber);
+        }
+        internal static void DeletePhone()
+        {
+            var user = GetUserOptionInput();
+            UserController.DeletePhone(user);
+        }
+
+        internal static void GetUsers()
+        {
+            var users = UserController.ViewAllPhones();
+            UserInterface.ShowPhoneBookTable(users);
+        }
+
+        internal static void GetUser()
+        {
+            var user = UserService.GetUserOptionInput();
+            UserInterface.ShowUser(user);
+        }
+        private static  User GetUserOptionInput()
         {
             var users = UserController.ViewAllPhones();
             var userArray = users.Select(x => x.Name).ToArray();

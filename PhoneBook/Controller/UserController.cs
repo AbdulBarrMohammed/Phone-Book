@@ -9,11 +9,9 @@ namespace PhoneBook.Controller
 {
     static class UserController
     {
-        public static void AddPhone()
+        public static void AddPhone(string name, string email, string phoneNumber)
         {
-            var name = AnsiConsole.Ask<string>("User name: ");
-            var email = AnsiConsole.Ask<string>("User email: ");
-            var phoneNumber = AnsiConsole.Ask<string>("User phone number: ");
+
 
             // Get database
             using var db = new PhoneDBContext();
@@ -23,7 +21,12 @@ namespace PhoneBook.Controller
         }
 
 
-        public static void DeletePhone() {}
+        public static void DeletePhone(User user)
+        {
+            using var db = new PhoneDBContext();
+            db.Remove(user);
+            db.SaveChanges();
+        }
 
         public static void UpdatePhone() {}
 

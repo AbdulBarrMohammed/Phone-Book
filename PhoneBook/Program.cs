@@ -28,22 +28,20 @@ while (isAppRunning)
 
     {
         case MenuOptions.AddPhone:
-            UserController.AddPhone();
+            UserService.InsertPhone();
             break;
         case MenuOptions.DeletePhone:
-            UserController.DeletePhone();
+            UserService.DeletePhone();
             break;
         case MenuOptions.UpdatePhone:
             UserController.UpdatePhone();
             break;
         case MenuOptions.ViewAllPhones:
-            var users = UserController.ViewAllPhones();
-            UserInterface.ShowPhoneBookTable(users);
+            UserService.GetUsers();
             break;
         case MenuOptions.ViewPhone:
-            //UserController.ViewPhone();
-            var user = UserService.GetUserOptionInput();
-            UserInterface.ShowUser(user);
+            UserService.GetUser();
+
             break;
         case MenuOptions.Quit:
             isAppRunning = false;
