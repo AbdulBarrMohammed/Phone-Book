@@ -15,7 +15,18 @@ namespace PhoneBook
         {
             var name = AnsiConsole.Ask<string>("User name: ");
             var email = AnsiConsole.Ask<string>("User email: ");
+            while (!Validation.IsValidEmail(email))
+            {
+                Console.WriteLine("Please enter correct email format");
+                email = AnsiConsole.Ask<string>("User email: ");
+            }
+
             var phoneNumber = AnsiConsole.Ask<string>("User phone number: ");
+            while (!Validation.IsValidNumber(phoneNumber))
+            {
+                Console.WriteLine("Please enter phone number in XXX-XXX-XXXX format");
+                phoneNumber = AnsiConsole.Ask<string>("User phone number: ");
+            }
 
             UserController.AddPhone(name, email, phoneNumber);
         }
